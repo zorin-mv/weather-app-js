@@ -1,0 +1,211 @@
+@import './include-media';
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: top;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+    min-width: 320px;
+}
+
+.section-weather {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 15px;
+    background: linear-gradient(to bottom,rgba(120, 107, 175, 1), rgba(40, 140, 255,1));
+    color: #fff;
+
+    @include media('<desktop') {
+        align-items: start;
+        min-height: 600px;
+    }
+
+    @include media('<tablet') {
+        align-items: start;
+        height: auto;
+        min-height: 825px;
+    }
+
+}
+
+.weather-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    min-height: 400px;
+
+    &>* {
+        @include media('<tablet') {
+            width: 100%;
+        }
+    }
+
+    .select-wrapper {
+        padding: 35px 20px 20px;
+
+        @include media('<tablet') {
+            padding: 30px 0 0;
+        }
+    }
+
+    .short-weather-content {
+        padding: 100px 20px 20px;
+
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 26px;
+        text-align: center;
+
+        &:first-child {
+            margin-bottom: 30px;
+        }
+
+        p {
+            min-width: 200px;
+        }
+    }
+
+    .weather-visual {
+        padding: 0 50px;
+
+        @include media('<tablet') {
+            text-align: center;
+        }
+    }
+
+
+    .extended-weather-content {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        padding: 20px;
+        max-width: 400px;
+        background-color: rgba($color: #000000, $alpha: .5);
+        border-radius: 25px;
+
+        @include media('<tablet') {
+            position: static;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #E83B26;
+            margin-bottom: 20px;
+        }
+
+        .city {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .temperature {
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .weather {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .weather-add-info {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                display: block;
+                height: 100%;
+                width: 2px;
+                background-color: #E83B26;
+            }
+
+            &__item {
+                display: flex;
+                font-size: 16px;
+                padding: 5px;
+
+                .visual {
+                    padding: 0 5px;
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+        }
+
+        
+    }
+}
+
+
+
+
+.select {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    min-width: 180px;
+
+    @include media('<tablet') {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    &.open {
+        .select__dropdown {
+            display: block;
+        }
+    }
+
+    &__input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    &__dropdown { 
+        display: none;
+        
+
+        .select-list {
+            list-style: none;
+
+            &__item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 10px;
+                border-top: 2px solid #fff;
+                cursor: pointer;
+            }
+        }
+    }
+}
